@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cliente HTML5</title>
+</head>
+<body>
+  <h1>Cliente HTML5</h1>
+  <button onclick="connect()">Conectar al servidor</button>
+
+  <script>
+    var conn;
+
+    function connect() {
+      // Conectarse al servidor
+const conn = new WebSocket('ws://localhost:8080');
+
+
+      // Acción a realizar cuando se abre la conexión
+      conn.onopen = function(event) {
+        console.log('Conectado al servidor');
+      };
+
+      // Acción a realizar cuando se recibe un mensaje del servidor
+      conn.onmessage = function(event) {
+        console.log('Mensaje recibido: ' + event.data);
+      };
+
+      // Acción a realizar cuando se cierra la conexión
+      conn.onclose = function(event) {
+        console.log('Desconectado del servidor');
+      };
+    }
+  </script>
+</body>
+</html>
+
